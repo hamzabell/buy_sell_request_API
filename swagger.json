@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Buy Sell Requests API",
+      "description": "",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Requests",
+        "description": "API for requests in the system"
+      }
+    ],
+    "paths": {
+        "/api/requests": {
+          "get": {
+            "tags": ["Requests"],
+            "summary": "Get all requests in system",
+            "parameters": [
+                {
+                  "name": "limit",
+                  "in": "query",
+                  "type": "integer",
+                  "format": "integer",
+                  "required": true
+                },
+                {
+                    "name": "page",
+                    "in": "query",
+                    "type": "integer",
+                    "format": "integer",
+                    "required": true
+                }
+              ],
+            "responses": {
+              "200": {
+                "description": "OK",
+                "headers": {
+                    "content-type": "application/json"
+                }, 
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Request"
+                        }
+                    }
+                }
+              }
+            }
+          }
+        }
+      },
+      "definitions": {
+        "Request": {
+          "type": "array",
+          "properties": {
+            "_id": {
+              "type": "integer",
+              "uniqueItems": true
+            },
+            "deviceName": {
+              "type": "string"
+            },
+            "requestType": {
+              "type": "string"
+            },
+            "condition": {
+              "type": "string"
+            },
+            "storageCapacity": {
+              "type": "string"
+            },
+            "price": {
+              "type": "string"
+            }
+          }
+        },
+        "Requests": {
+          "type": "array",
+          "$ref": "#/definitions/Requests"
+        }
+      },
+      
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+  }

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const Requests = new mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   deviceName: {
     type: String,
     required: true,
@@ -9,7 +8,7 @@ const Requests = new mongoose.Schema({
   requestType: {
     type: String,
     required: true,
-    enum: ["BUY", "SELL"],
+    enum: ["Buy", "Sell"],
   },
   condition: {
     type: String,
@@ -19,16 +18,11 @@ const Requests = new mongoose.Schema({
   storageCapacity: {
     type: String,
     required: true,
-    enum: ["64GB", "256GB", "512GB"],
+    enum: ["16GB", "32GB", "64GB", "128GB", "256GB", "512GB"],
   },
   price: {
     type: Number,
     required: true,
-  },
-  currencySign: {
-    type: String,
-    required: true,
-    enum: ["dollar", "naira"],
   },
 });
 

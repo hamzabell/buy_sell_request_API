@@ -1,8 +1,7 @@
-function jsonResponse(res, status, message, data) {
+function jsonResponse(res, status, data) {
   return res.status(status).send(
     JSON.stringify({
-      message,
-      data,
+      ...data,
     })
   );
 }
